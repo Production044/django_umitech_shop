@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load static %}
+    <!-- Slider Section Start -->
+    <div class="slider-section section">
+        <div class="slider-wrapper">
+            <div class="slider-slide" data-bg="{% static 'images/1_2.png' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-9">
+                            <div class="slide-content">
+                                <div class="slide-content-inner">
+                                    <h2></h2>
+                                    <p></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slider Section End -->
+
+    <!-- Banner Section Start -->
+    <div class="banner-section banner-section--2 section mt-100 mb-80 mt-xs-70 mb-xs-50">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12">
+                    <div class="banner-masonry">
+
+                        <div class="resizer"></div>
+
+                        <div class="banner">
+                            <a href="/catalogue/broneplyty"><img src="{% static 'images/banner/h2-banner.jpg' %}" alt="Banner"></a>
+                        </div>
+
+                        <div class="banner banner-width-2">
+                            <a href="/catalogue/sholomy_ta_golovni_ybory"><img src="{% static 'images/banner/h2-banner_2.jpg' %}" alt="Banner"></a>
+                        </div>
+
+                        <div class="banner banner-width-3">
+                            <a href="/catalogue/odezhda-obuv"><img src="{% static 'images/banner/h2-banner_3.jpg' %}" alt="Banner"></a>
+                        </div>
+
+                        <div class="banner banner-width-3">
+                            <a href="/catalogue/plytonosky#"><img src="{% static 'images/banner/h2-banner_4.jpg' %}" alt="Banner"></a>
+                        </div>
+
+                        <div class="banner banner-width-2">
+                            <a href="/catalogue/aksessuary"><img src="{% static 'images/banner/h2-banner_5.jpg' %}" alt="Banner"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner Section End -->
+    <!-- Popular Product Section Start -->
+    <div class="product-section section mb-100 mb-xs-70">
+        <div class="container">
+
+            <div class="row">
+                <div class="section-title text-center col mb-50">
+                    <h1>Рекомендовані товари</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="product-slider">
+
+                {% for product in featured_products %}
+                    <div class="slide-item col">
+                        <div class="product-item bg-gray">
+                            <div class="product-inner">
+                                <div class="image-wrap">
+
+                                    <a href="{% url 'product' product.slug %}" class="image"><img
+                                            src="{{ product.images.all.0.image.url }}" alt="{{ product.name }}"></a>
+                                </div>
+                                <div class="content text-center">
+
+                                    <h4 class="title"><a href="{% url 'product' product.slug %}">{{ product.title }}</a></h4>
+                                    <span class="price">{{ product.price }} ₴</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Popular Product Section End -->
+
+
+{% endblock main %}

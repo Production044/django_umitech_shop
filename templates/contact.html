@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load static %}
+{% load widget_tweaks %}
+    <!-- Page Banner Section Start -->
+    <div class="page-banner-section section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="page-banner-content col text-center">
+                    <h1>КОНТАКТИ</h1>
+                    <ul class="breadcrumb justify-content-center">
+                        <li><a href="{% url 'index' %}">ГОЛОВНА</a></li>
+                        <li><a href="{% url 'contact' %}">КОНТАКТИ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Banner Section End -->
+    <!-- Contact Page Start -->
+    <div class="page-section section mt-100 mt-xs-70">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 mb-50 mb-xs-0">
+
+                    <div class="contact-wrap">
+
+                        <div class="contact-form mb-50">
+                            <form id="contact-form" action="/contact/" method="post">
+                                {% csrf_token %}
+                                <div class="row row-10">
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        {% render_field form.name type="text" placeholder="Name" minlength="2" maxlength="50" id="con_name" %}
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        {% render_field form.email type="email" placeholder="Email" id="con_email" %}
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        {% render_field form.message placeholder="Повідомлення" maxlength="1000" id="con_message" %}
+                                    </div>
+
+                                    <div class="col-12">
+                                        <input type="submit" value="Відправити">
+                                    </div>
+                                </div>
+                            </form>
+
+<!--                            <div class="alert alert-secondary text-center" role="alert">-->
+<!--                                -->
+<!--                            </div>-->
+                                <p class="form-message"></p>
+                                {% if messages %}
+                                {% for message in messages %}
+                                <p>{{ message }}</p>
+                                {% endfor %}
+                                {% endif %}
+
+
+                        </div>
+
+                        <div class="contact-info-wrap mb-50">
+                            <h3>ЗВ'ЯЗОК З НАМИ</h3>
+                            <ul class="contact-info">
+                                <li><strong>АДРЕСА:</strong> <span>м. Бориспіль вул. Шевченка 12</span></li>
+                                <li><strong>Email:</strong> <span><a href="mailto:info@umitech.com">info@umitech.com</a></span></li>
+                                <li><strong>ТЕЛ:</strong> <span><a href="tel:01234567890">01234 567 890</a><a href="tel:01234567891">01234 567 891</a></span></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page End -->
+{% endblock main %}

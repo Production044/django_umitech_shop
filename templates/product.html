@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load static %}
+<!--     Page Banner Section Start-->
+    <div class="page-banner-section section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="page-banner-content text-center col">
+<!--                    <h1>{{ product.price }}</h1>-->
+                    <ul class="breadcrumb justify-content-center">
+                        <li><a href="index.html">ГОЛОВНА</a></li>
+                        <li><a href="shop-full-width.html">КАТАЛОГ</a></li>
+
+                        <li>{% for category in product.categories.all %}
+                            <a href="{% url 'catalogue' category.slug %}">{{ category.name }}</a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Banner Section End -->
+
+    <!-- Page Section Start -->
+    <div class="page-section section mt-100 mb-100 mt-xs-70 mb-xs-70">
+        <div class="container">
+            <div class="row mb-20">
+                <!-- Single Product Images -->
+                <div class="col-lg-5 col-md-6 col-12 mb-40">
+
+                    <!-- Tab panes -->
+                    <div class="pro-large-img mb-10 fix">
+                        <img src="{{ product.images.first.image.url }}" alt="{{ product.title }}" data-zoom-image="{{ product.images.first.image.url }}" class="product-zoom" />
+                    </div>
+
+                    <!-- Single Product Thumbnail Slider -->
+
+                    <ul id="pro-thumb-img" class="pro-thumb-img">
+                        {% for image in product.images.all %}
+                        <li><a href="" data-image="{{ image.image.url }}" data-zoom-image="{{ image.image.url }}"><img src="{{ image.image.url }}" alt="" /></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
+
+
+                <!-- Single Product Details -->
+                <div class="col-lg-7 col-md-6 col-12 mb-40">
+                    <div class="product-details section">
+                        <!-- Title -->
+                        <h1 class="title">{{ product.title }}</h1>
+
+                        <h4 class="title">{{ product.brand.name }}</h4>
+                        <!-- Price Ratting -->
+                        <div class="price-ratting section">
+                            <!-- Price -->
+                            <span class="price float-left"><span class="new">{{ product.price }} ₴</span></span>
+                            <p style="color:#51bd99;">{{ product.availability_in }}</p>
+
+                            <!-- Ratting -->
+<!--                            <span class="ratting float-right">-->
+<!--                                <i class="fa fa-star active"></i>-->
+<!--                                <i class="fa fa-star active"></i>-->
+<!--                                <i class="fa fa-star active"></i>-->
+<!--                                <i class="fa fa-star active"></i>-->
+<!--                                <i class="fa fa-star active"></i>-->
+<!--                                <span> РЕЙТИНГ</span>-->
+<!--                            </span>-->
+                        </div>
+                        <!-- Short Description -->
+<!--                        <div class="short-desc section">-->
+<!--                            <h5 class="pd-sub-title">НАЯВНІСТЬ:</h5>-->
+<!--                             <p style="color:#51bd99;">{{ product.availability_in }}</p>-->
+<!--                        </div>-->
+
+
+                        <div class="short-desc section">
+                            <h5 class="pd-sub-title">ОПИС</h5>
+                            {{ product.description|safe }}
+                        </div>
+
+                        <!-- Product Color -->
+                        <div class="color-list section">
+                            <h5 class="pd-sub-title">КОЛІР</h5>
+                            {{ product.color.name }}
+<!--                            <button class="active" style="background-color: #51bd99;"><i class="fa fa-check"></i></button>-->
+<!--                            <button style="background-color: #ff7a5f;"><i class="fa fa-check"></i></button>-->
+<!--                            <button style="background-color: #baa6c2;"><i class="fa fa-check"></i></button>-->
+<!--                            <button style="background-color: #414141;"><i class="fa fa-check"></i></button>-->
+                        </div>
+                            <!--Product Size -->
+<!--                        <div class="product-size section">-->
+<!--                            {{ product.size }}-->
+<!--                            <h5 class="pd-sub-title">РОЗМІР</h5>-->
+<!--                            <button>42</button>-->
+<!--                            <button class="active">43</button>-->
+<!--                            <button>44</button>-->
+<!--                            <button>45</button>-->
+<!--                        </div>-->
+
+                        <div class="product-size section">
+
+                            <h5 class="pd-sub-title">РОЗМІР</h5>
+                            {% for size in product.sizes.all %}
+                            <button>{{ size }}</button>
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- Quantity Cart -->
+                        <div class="quantity-cart section">
+                            <div class="product-quantity">
+                                <input type="text" value="0">
+                            </div>
+                            <button class="add-to-cart">ДОДАТИ В КОШИК</button>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="product-section section mb-100 mb-xs-70">
+        <div class="container">
+
+            <div class="row">
+                <div class="section-title text-center col mb-50">
+                    <h1>схожі товари</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="product-slider">
+
+                {% for product in related_products %}
+                    <div class="slide-item col">
+                        <div class="product-item bg-gray">
+                            <div class="product-inner">
+                                <div class="image-wrap">
+
+                                    <a href="{% url 'product' product.slug %}" class="image"><img
+                                            src="{{ product.images.all.0.image.url }}" alt="{{ product.name }}"></a>
+                                </div>
+                                <div class="content text-center">
+
+                                    <h4 class="title"><a href="{% url 'product' product.slug %}">{{ product.title }}</a></h4>
+                                    <h4 class="text"><a href="{% url 'product' product.slug %}">{{ product.brand.name }}</a></h4>
+                                    <span class="price">{{ product.price }} ₴</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Page Section End -->
+{% endblock main %}

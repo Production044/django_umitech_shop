@@ -1,0 +1,58 @@
+{% load static %}
+<div class="side-menu-wrap">
+        <button class="side-menu-close"><span></span></button>
+        <div class="side-menu-inner">
+
+            <div class="side-logo"><a href="{% url 'index' %}"><img src="{% static 'images/umi_logo.png' %}" alt=""></a></div>
+
+            <div class="side-menu nice-scroll">
+                <nav>
+                    <ul>
+                        <li class="menu-item-has-children"><a href="{% url 'index' %}">Home</a>
+                            <ul class="sub-menu">
+                                <li><a href="index.html">Home One</a></li>
+                                <li><a href="index-2.html">Home Two</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><a href="shop-left-sidebar.html">Shop</a>
+                            <ul class="sub-menu">
+                                <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                <li><a href="shop-full-width.html">Shop Full Width</a></li>
+                                <li><a href="single-product.html">Single Product</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><a href="contact.html#">Pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="login-register.html">Login Register</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><a href="blog-left-sidebar.html">Blog</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                                <li><a href="blog-full-width.html">Blog Full Width</a></li>
+                                <li><a href="single-blog-left-sidebar.html">Single Blog Left Sidebar</a></li>
+                                <li><a href="single-blog-right-sidebar.html">Single Blog Right Sidebar</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="side-social">
+                <a href="contact.html#"><i class="fa fa-facebook"></i></a>
+                <a href="contact.html#"><i class="fa fa-twitter"></i></a>
+                <a href="contact.html#"><i class="fa fa-pinterest"></i></a>
+                <a href="contact.html#"><i class="fa fa-instagram"></i></a>
+                <a href="contact.html#"><i class="fa fa-google-plus"></i></a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="side-menu-overlay"></div>

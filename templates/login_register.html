@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load static %}
+{% load widget_tweaks %}
+
+    <!-- Page Banner Section Start -->
+    <div class="page-banner-section section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="page-banner-content col text-center">
+                    <h1>ВХІД & РЕЄСТРАЦІЯ</h1>
+                    <ul class="breadcrumb justify-content-center">
+                        <li><a href="{}">ГОЛОВНА</a></li>
+<!--                        <li><a href="login-register.html">Login & Register</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Banner Section End -->
+
+    <!-- Login & Register Page Start -->
+    <div class="page-section section mt-100 mb-60 mt-xs-70 mb-xs-30">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-12 mb-40">
+                    <div class="login-register-form-wrap">
+                        <h3>ВХІД</h3>
+                        <form action="login-register.html#" class="mb-30">
+                            <div class="row">
+                                <div class="col-12 mb-15"><input type="text" placeholder="ЛОГІН АБО EMAIL"></div>
+                                <div class="col-12 mb-15"><input type="password" placeholder="ПАРОЛЬ"></div>
+                                <div class="col-12"><input type="submit" value="УВІЙТИ"></div>
+                            </div>
+                        </form>
+                        <h4>You can also login with...</h4>
+                        <div class="social-login">
+                            <a href="login-register.html#"><i class="fa fa-facebook"></i></a>
+                            <a href="login-register.html#"><i class="fa fa-twitter"></i></a>
+                            <a href="login-register.html#"><i class="fa fa-google-plus"></i></a>
+                            <a href="login-register.html#"><i class="fa fa-pinterest"></i></a>
+                            <a href="login-register.html#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-12 mb-40 text-center">
+                    <span class="login-register-separator"></span>
+                </div>
+
+                <div class="col-lg-6 col-12 mb-40 ml-auto">
+                    <div class="login-register-form-wrap">
+                        <h3>РЕЄСТРАЦІЯ</h3>
+                        <form action="###" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 col-12 mb-15"><input type="text" placeholder="ФІО">
+                                </div>
+                                <div>
+                                {% render_field form.username type="text" class="col-md-6 col-12 mb-15" placeholder="ЛОГІН" minlength="2" maxlength="50" %}
+                                </div>
+                                <div class="col-md-6 col-12 mb-15"><input type="email" placeholder="EMAIL"></div>
+                                <div class="col-md-6 col-12 mb-15"><input type="password" placeholder="ПАРОЛЬ"></div>
+                                <div class="col-md-6 col-12 mb-15"><input type="password" placeholder="ПАРОЛЬ"></div>
+                                <div class="col-md-6 col-12"><input type="submit" value="РЕЄСТРАЦІЯ"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Login & Register Page End -->
+{% endblock main %}
